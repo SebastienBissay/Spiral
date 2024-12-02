@@ -1,12 +1,33 @@
 package parameters;
 
+import processing.core.PVector;
+
 import java.lang.reflect.Field;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import static processing.core.PConstants.MULTIPLY;
+
 public final class Parameters {
-    public static final long SEED = 11;
+    public static final long SEED = 42;
+    public static final int WIDTH = 1920;
+    public static final int HEIGHT = 1080;
+    public static final int MARGIN = -50;
+    public static final PVector ORIGIN = new PVector(WIDTH * .7f, HEIGHT / 3f);
+    public static final int NUMBER_OF_ITERATIONS = 100000;
+    public static final float LINE_LENGTH = 200;
+    public static final float SPEED_FIXED_PART = 1f;
+    public static final float SPEED_GAUSSIAN_FACTOR = .5f;
+    public static final float NOISE_BASE_SCALE = 5f;
+    public static final float NOISE_EXPONENT = .25f;
+    public static final float NOISE_EXTERNAL_FACTOR = 3f;
+    public static final float NOISE_INTERNAL_FACTOR = 5f;
+    public static final float NOISE_DIVISOR_FIXED_PART = 2f;
+    public static final float NOISE_DIVISOR_VARIABLE_PART_FACTOR = .5f;
+    public static final Color BACKGROUND_COLOR = new Color(245);
+    public static final Color STROKE_COLOR = new Color(0, 10, 75, 25);
+    public static final int BLEND_MODE = MULTIPLY;
 
     /**
      * Helper method to extract the constants in order to save them to a json file
@@ -17,7 +38,7 @@ public final class Parameters {
         Map<String, Object> map = new HashMap<>();
 
         Field[] declaredFields = Parameters.class.getDeclaredFields();
-        for(Field field : declaredFields) {
+        for (Field field : declaredFields) {
             field.setAccessible(true);
             map.put(field.getName(), field.get(Parameters.class));
         }
@@ -25,7 +46,7 @@ public final class Parameters {
         return Collections.singletonMap(Parameters.class.getSimpleName(), map);
     }
 
-    public record Color (float red, float green, float blue, float alpha) {
+    public record Color(float red, float green, float blue, float alpha) {
         public Color(float red, float green, float blue) {
             this(red, green, blue, 255);
         }
