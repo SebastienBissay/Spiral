@@ -7,15 +7,15 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import static processing.core.PConstants.MULTIPLY;
+import static processing.core.PConstants.*;
 
 public final class Parameters {
-    public static final long SEED = 42;
+    public static final long SEED = 11021985;
     public static final int WIDTH = 1920;
     public static final int HEIGHT = 1080;
     public static final int MARGIN = -50;
     public static final PVector ORIGIN = new PVector(WIDTH * .7f, HEIGHT / 3f);
-    public static final int NUMBER_OF_ITERATIONS = 100000;
+    public static final int NUMBER_OF_ITERATIONS = 15000;
     public static final float LINE_LENGTH = 200;
     public static final float SPEED_FIXED_PART = 1f;
     public static final float SPEED_GAUSSIAN_FACTOR = .5f;
@@ -25,9 +25,17 @@ public final class Parameters {
     public static final float NOISE_INTERNAL_FACTOR = 5f;
     public static final float NOISE_DIVISOR_FIXED_PART = 2f;
     public static final float NOISE_DIVISOR_VARIABLE_PART_FACTOR = .5f;
-    public static final Color BACKGROUND_COLOR = new Color(245);
-    public static final Color STROKE_COLOR = new Color(0, 10, 75, 25);
-    public static final int BLEND_MODE = MULTIPLY;
+    public static final Color BACKGROUND_COLOR = new Color(46);
+    public static final Color[] PALETTE = {
+       new Color(229, 181, 103),
+       new Color(180, 210, 115),
+       new Color(232, 125, 62),
+       new Color(158, 134, 200),
+       new Color(176, 82, 121),
+       new Color(108, 153, 187)
+    };
+    public static final float PALETTE_ALPHA = 12;
+    public static final int BLEND_MODE = SCREEN;
 
     /**
      * Helper method to extract the constants in order to save them to a json file
